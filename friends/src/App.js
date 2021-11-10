@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
+import FriendsList from './components/FriendsList';
 
 
 
@@ -12,20 +13,15 @@ function App() {
     <div className="App">
       <h2>Client Auth Project</h2>
 
-      {/* <Switch> */}
-        {/* <Route path="/friends">
-          <Friends />
-        </Route> */}
-        <PrivateRoute path="/friends">
-          <FriendsList />
-        </PrivateRoute>
+      <Switch>
+        <PrivateRoute path="/friends" component={FriendsList} />
         <Route path="/login">
           <Login />
         </Route>
         <Route>
           <Login />
         </Route>
-      {/* </Switch> */}
+      </Switch>
     </div>
   </Router>
     
