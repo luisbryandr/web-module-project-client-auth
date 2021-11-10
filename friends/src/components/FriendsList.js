@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const FriendsList = () => {
+
+    const[ friends, setFriends]= useState([])
+
     return(
         <div>
-            These are our friends
+            <h3>These are our friends</h3>
         </div>
     )
 
