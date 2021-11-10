@@ -1,9 +1,11 @@
 import React, { useState }from "react";
 import axios from 'axios';
+import { useHistory } from "react-router";
 
 const initialValues = {username:" ", password: " "}
 
 const Login = ()=> {
+    const { push } = useHistory();
     const [formValues, setFormValues] = useState(initialValues)
 
     const handleChanges = (e) => {
@@ -17,9 +19,13 @@ const Login = ()=> {
     const handleSubmit = (e) =>{
         e.preventDefault()
         axios
-        .get('http://localhost:5000/api/login')
+        .post('http://localhost:5000/api/login', formValues)
         .then(res => {
-            console.log('thisis the response',res)
+            // console.log('thisis the response',res)
+            //allowed me to see what the response was and build out the following
+            //set res.data.payload --which is the token in form of a string-- to local storgage
+            window.localStorage.setItem('token', res.data.payload);
+            push("/friends");
         })
         .catch(err=>{
             console.log('thisis the error',err.message)
