@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
+
+
 
 const FriendsList = () => {
 
@@ -17,12 +20,18 @@ const FriendsList = () => {
     },[]);
 
     return(
-        <div>
-            <h3>These are our friends</h3>
-            {friends.map((friend) => (
-                <p key={friend.id}>{friend.name}</p>
-            ))}
-        </div>
+        <Router> 
+            <div>
+                <h3>These are our friends</h3>
+                    {friends.map((friend) => (
+                     <p key={friend.id}>{friend.name}</p>
+                    ))}
+
+             
+            </div>
+        </Router>
+        
+       
     )
 
 }
